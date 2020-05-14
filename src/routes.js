@@ -1,26 +1,33 @@
 import * as React from 'react';
-import {View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import {StatusBar} from 'react-native';
 
-function HomeScreen() {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Home Screen</Text>
-    </View>
-  );
-}
+import Login from './pages/login';
+import CustoVenda from './pages/custovenda';
 
 const Stack = createStackNavigator();
 
-function App() {
+function Routes() {
   return (
     <NavigationContainer>
+      <StatusBar barStyle="light-content" backgroundColor="#1f1f1d" />
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen
+          name="login"
+          component={Login}
+          options={{
+            title: '',
+          }}
+        />
+        <Stack.Screen
+          name="custovenda"
+          component={CustoVenda}
+          options={{title: 'Custo de Venda'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-export default App;
+export default Routes;
