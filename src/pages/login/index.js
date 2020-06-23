@@ -16,13 +16,21 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import logo from './../../resource/images/logo.png';
+import Api from '../../shared/Api';
 
 const Login = ({navigation}) => {
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
 
   _onPress = () => {
-    navigation.navigate('custovenda');
+    let usuario = {
+      usuario: 'samuel.vaz',
+      senha: '',
+    };
+    Api.post('Usuario', usuario)
+      .then((e) => console.log('result data', e.data))
+      .catch((e) => console.log('erro =>> ', e));
+    // navigation.navigate('custovenda');
   };
 
   return (
